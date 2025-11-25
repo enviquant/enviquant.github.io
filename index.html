@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EnviQuant | Retail Intelligence Engine</title>
+    <meta name="description" content="EnviQuant - Bridging the Gap Between Conscious Intention and Retail Revenue.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS VARIABLES --- */
+        :root {
+            --bg-dark: #050a14;
+            --bg-card: #0e1624;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --primary: #00FFA3; /* The Electric Green */
+            --primary-dim: rgba(0, 255, 163, 0.1);
+            --gradient-text: linear-gradient(90deg, #ffffff 0%, #00FFA3 100%);
+        }
+
+        /* --- RESET & BASE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- UTILITIES --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .text-gradient {
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 32px;
+            background: var(--primary);
+            color: #000;
+            font-weight: 700;
+            border-radius: 4px;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            border: 1px solid var(--primary);
+        }
+        .btn:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -10px var(--primary-dim);
+        }
+        .section-padding { padding: 100px 0; }
+
+        /* --- HEADER --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            background: rgba(5, 10, 20, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+        .logo span { color: var(--primary); }
+        .nav-links { display: flex; gap: 40px; }
+        .nav-links a {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 255, 163, 0.08) 0%, rgba(5, 10, 20, 0) 50%);
+        }
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 40px;
+        }
+        .tag {
+            display: inline-block;
+            padding: 6px 16px;
+            background: var(--primary-dim);
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0, 255, 163, 0.2);
+        }
+
+        /* --- STATS SECTION --- */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+        }
+        .stat-card {
+            background: var(--bg-card);
+            padding: 40px;
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 8px;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        .stat-label { color: var(--text-muted); }
+
+        /* --- PRODUCT SECTION --- */
+        .product-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .product-image {
+            position: relative;
+        }
+        .product-image img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .feature-list li {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        .check-icon {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* --- TRACTION STRIP --- */
+        .traction-strip {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 40px 0;
+            text-align: center;
+        }
+        .traction-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            opacity: 0.8;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .pilot-badge {
+            background: #fff;
+            color: #000;
+            padding: 4px 10px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            border-radius: 4px;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 50px 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- ANIMATION CLASSES --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .nav-links { display: none; } /* Simplified for MVP */
+            .product-section { grid-template-columns: 1fr; }
+            .product-image { order: -1; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Envi<span>Quant</span>.</div>
+                <ul class="nav-links">
+                    <li><a href="#mission">Mission</a></li>
+                    <li><a href="#product">ecoScanAi</a></li>
+                    <li><a href="#tech">Technology</a></li>
+                </ul>
+                <a href="mailto:contact@enviquant.com" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content reveal">
+                <span class="tag">Pre-Seed Stage • Pilot Secured</span>
+                <h1>Turning Conscious Intention into <span class="text-gradient">Retail Revenue.</span></h1>
+                <p>EnviQuant builds the "Decision Layer" for modern retail. We empower consumers with data and help brands optimize the $27M sustainability blind spot.</p>
+                <div style="display: flex; gap: 20px;">
+                    <a href="#product" class="btn">View The Solution</a>
+                    <a href="#" style="padding: 12px 32px; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px;">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="stats-grid reveal">
+            <div class="stat-card">
+                <div class="stat-number">65%</div>
+                <div class="stat-label">Consumers want to buy Green</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">$135M</div>
+                <div class="stat-label">Urban Market Opportunity</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Local Materials Verified</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="traction-strip">
+            <div class="container">
+                <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.9rem; letter-spacing: 1px;">TRUSTED PILOT PARTNER</p>
+                <div class="traction-logo">
+                    WHOLESALE CLUB <span class="pilot-badge">PILOT CONFIRMED</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="product" class="section-padding">
+        <div class="container">
+            <div class="product-section">
+                <div class="product-text reveal">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Introducing <span class="text-gradient">ecoScanAi</span></h2>
+                    <p style="color: var(--text-muted); margin-bottom: 30px;">
+                        The first AI-powered app that scores products based on <strong>Bangladesh's real recycling infrastructure</strong>. We don't just show data; we drive decisions.
+                    </p>
+                    <ul class="feature-list">
+                        <li>
+                            <span class="check-icon">✓</span>
+                            <div>
+                                <strong>Scan & Score</strong>
+                                <p style="font-size: 0.9rem; color: var(--text-muted);">Instant A-F grade based on 70/30 Proprietary Logic.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            <div>
+                                <strong>Smart Swap Engine</strong>
+                                <p style="font-size: 0.9rem; color: var(--text-muted);">Automatically suggests higher-margin, eco-friendly alternatives.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            <div>
+                                <strong>Green Rewards</strong>
+                                <p style="font-size: 0.9rem; color: var(--text-muted);">Integrated with Retail POS for instant loyalty points.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="product-image reveal">
+                    <img src="https://placehold.co/600x400/111/00ffa3?text=App+Mockup+Here" alt="ecoScanAi App Mockup">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tech" class="section-padding" style="background: var(--bg-card);">
+        <div class="container" style="text-align: center;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 60px;">Built for <span class="text-gradient">Scale</span></h2>
+            <div class="stats-grid" style="margin-top: 0;">
+                <div class="stat-card" style="border-color: var(--primary-dim);">
+                    <h3 style="margin-bottom: 10px;">GoLang</h3>
+                    <p class="stat-label">High-performance Backend Microservices</p>
+                </div>
+                <div class="stat-card" style="border-color: var(--primary-dim);">
+                    <h3 style="margin-bottom: 10px;">Flutter</h3>
+                    <p class="stat-label">Cross-platform Native Performance</p>
+                </div>
+                <div class="stat-card" style="border-color: var(--primary-dim);">
+                    <h3 style="margin-bottom: 10px;">Local Data</h3>
+                    <p class="stat-label">Proprietary Dhaka Waste Database</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <h3 class="logo" style="margin-bottom: 20px;">Envi<span>Quant</span>.</h3>
+            <p>&copy; 2025 EnviQuant Analytics. Building Smart Bangladesh.</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', reveal);
+        function reveal(){
+            var reveals = document.querySelectorAll('.reveal');
+            for(var i = 0; i < reveals.length; i++){
+                var windowheight = window.innerHeight;
+                var revealtop = reveals[i].getBoundingClientRect().top;
+                var revealpoint = 150;
+                if(revealtop < windowheight - revealpoint){
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        // Trigger once on load
+        reveal();
+    </script>
+</body>
+</html>
