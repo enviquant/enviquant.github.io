@@ -3,378 +3,482 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EnviQuant | Retail Intelligence Engine</title>
-    <meta name="description" content="EnviQuant - Bridging the Gap Between Conscious Intention and Retail Revenue.">
-    
+    <title>EnviQuant | Quantifying The Future</title>
+    <meta name="description" content="EnviQuant - Building the digital infrastructure for environmental quantification.">
+
+    <!-- Fonts: Plus Jakarta Sans (Modern, Geometric, Tech) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        /* --- CSS VARIABLES --- */
+        /* --- VARIABLES & THEME --- */
         :root {
-            --bg-dark: #050a14;
-            --bg-card: #0e1624;
-            --text-main: #ffffff;
-            --text-muted: #94a3b8;
-            --primary: #00FFA3; /* The Electric Green */
-            --primary-dim: rgba(0, 255, 163, 0.1);
-            --gradient-text: linear-gradient(90deg, #ffffff 0%, #00FFA3 100%);
+            --bg-main: #f8f9fe; /* Very light purple tint base */
+            --text-main: #1e1b4b; /* Dark Navy */
+            --text-muted: #64748b;
+            --accent-purple: #8b5cf6;
+            --accent-green: #10b981; /* Eco touch */
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.6);
+            --card-shadow: 0 20px 40px -10px rgba(139, 92, 246, 0.1);
         }
 
-        /* --- RESET & BASE --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* --- RESET --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-dark);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #f3f0ff 100%);
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
+            position: relative;
         }
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        ul { list-style: none; }
+
+        /* --- BACKGROUND GRAPHICS (LEAF & GRID) --- */
+        .bg-graphics {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        /* Abstract Leaf Shape 1 */
+        .leaf-1 {
+            position: absolute;
+            top: -10%;
+            right: -5%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(167, 139, 250, 0.15) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            filter: blur(40px);
+            animation: float 10s infinite alternate;
+        }
+        /* Abstract Leaf Shape 2 */
+        .leaf-2 {
+            position: absolute;
+            bottom: -10%;
+            left: -10%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(52, 211, 153, 0.08) 0%, rgba(255,255,255,0) 70%); /* Subtle Green hint */
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            filter: blur(50px);
+            animation: float 15s infinite alternate-reverse;
+        }
+        /* Tech Grid Overlay */
+        .tech-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(139, 92, 246, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(20px, 40px) rotate(5deg); }
+        }
 
         /* --- UTILITIES --- */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        .section-padding { padding: 120px 0; }
         .text-gradient {
-            background: var(--gradient-text);
+            background: linear-gradient(135deg, #1e1b4b 0%, #7c3aed 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .btn {
+        .badge {
             display: inline-block;
-            padding: 12px 32px;
-            background: var(--primary);
-            color: #000;
+            padding: 6px 16px;
+            background: rgba(255, 255, 255, 0.8);
+            color: var(--accent-purple);
+            border-radius: 100px;
+            font-size: 0.75rem;
             font-weight: 700;
-            border-radius: 4px;
-            font-size: 1rem;
-            letter-spacing: 0.5px;
-            border: 1px solid var(--primary);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
-        .btn:hover {
-            background: transparent;
-            color: var(--primary);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px -10px var(--primary-dim);
-        }
-        .section-padding { padding: 100px 0; }
 
         /* --- HEADER --- */
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 20px 0;
             z-index: 1000;
-            background: rgba(5, 10, 20, 0.85);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(16px);
+            border-bottom: var(--glass-border);
         }
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 80px;
         }
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 800;
-            letter-spacing: -1px;
+            letter-spacing: -0.5px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .logo span { color: var(--primary); }
-        .nav-links { display: flex; gap: 40px; }
-        .nav-links a {
-            font-size: 0.9rem;
+        /* Leaf Logo Icon (CSS Only) */
+        .logo-icon {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #8b5cf6, #10b981);
+            border-radius: 0 50% 50% 50%;
+            transform: rotate(-45deg);
+        }
+        .nav-menu { display: flex; gap: 40px; }
+        .nav-menu a {
             color: var(--text-muted);
-            font-weight: 500;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: 0.3s;
         }
-        .nav-links a:hover { color: var(--primary); }
+        .nav-menu a:hover { color: var(--accent-purple); }
 
         /* --- HERO SECTION --- */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
-            background: radial-gradient(circle at 50% 50%, rgba(0, 255, 163, 0.08) 0%, rgba(5, 10, 20, 0) 50%);
         }
-        .hero-content {
-            max-width: 800px;
-            z-index: 2;
-        }
+        .hero-content { max-width: 800px; position: relative; z-index: 2; }
         .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-size: clamp(3.5rem, 6vw, 5.5rem);
             font-weight: 800;
             line-height: 1.1;
-            margin-bottom: 24px;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
         }
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.35rem;
             color: var(--text-muted);
-            max-width: 600px;
             margin-bottom: 40px;
+            max-width: 650px;
+            font-weight: 400;
         }
-        .tag {
-            display: inline-block;
-            padding: 6px 16px;
-            background: var(--primary-dim);
-            color: var(--primary);
-            border-radius: 50px;
-            font-size: 0.85rem;
+        .btn-primary {
+            padding: 18px 48px;
+            background: #1e1b4b;
+            color: #fff;
             font-weight: 600;
-            margin-bottom: 20px;
-            border: 1px solid rgba(0, 255, 163, 0.2);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(30, 27, 75, 0.2);
+        }
+        .btn-primary:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 15px 40px rgba(30, 27, 75, 0.3);
+            background: #2e2a6b;
         }
 
-        /* --- STATS SECTION --- */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: -50px;
-            position: relative;
-            z-index: 10;
-        }
-        .stat-card {
-            background: var(--bg-card);
+        /* --- GLASS CARDS (For Product & Team) --- */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: var(--glass-border);
+            border-radius: 24px;
             padding: 40px;
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 8px;
-            text-align: center;
+            box-shadow: var(--card-shadow);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 10px;
+        .glass-card:hover {
+            transform: translateY(-10px) scale(1.01);
+            background: rgba(255, 255, 255, 0.9);
+            border-color: rgba(139, 92, 246, 0.3);
         }
-        .stat-label { color: var(--text-muted); }
 
         /* --- PRODUCT SECTION --- */
-        .product-section {
+        .product-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.2fr 0.8fr;
             gap: 60px;
             align-items: center;
         }
-        .product-image {
+        .mockup-wrapper {
             position: relative;
-        }
-        .product-image img {
-            width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .feature-list li {
-            margin-bottom: 20px;
+            height: 600px;
+            background: linear-gradient(to bottom right, #fdfbf7, #f0fdf4); /* Subtle organic gradient */
+            border-radius: 32px;
             display: flex;
-            align-items: flex-start;
-            gap: 15px;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: inset 0 0 40px rgba(255, 255, 255, 0.8);
         }
-        .check-icon {
-            color: var(--primary);
-            font-weight: bold;
+        .mockup-img {
+            width: 85%;
+            max-width: 380px;
+            border-radius: 24px;
+            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.15);
+            transform: translateY(40px) rotate(-5deg);
+            transition: 0.5s ease-out;
+        }
+        .mockup-wrapper:hover .mockup-img { 
+            transform: translateY(20px) rotate(0deg); 
         }
 
-        /* --- TRACTION STRIP --- */
-        .traction-strip {
-            border-top: 1px solid rgba(255,255,255,0.05);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            padding: 40px 0;
-            text-align: center;
+        /* --- TEAM SECTION (Updated) --- */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
         }
-        .traction-logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #fff;
-            opacity: 0.8;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        .pilot-badge {
-            background: #fff;
-            color: #000;
-            padding: 4px 10px;
-            font-size: 0.7rem;
+        .member-role {
+            font-size: 0.75rem;
+            color: var(--accent-purple);
             font-weight: 800;
-            border-radius: 4px;
-            vertical-align: middle;
-            margin-left: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .member-name { font-size: 1.6rem; font-weight: 800; margin-bottom: 5px; color: var(--text-main); }
+        .member-tech {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #475569;
+            margin-bottom: 18px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .member-desc { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+
+        /* --- FUTURE SUSPENSE BANNER --- */
+        .future-banner {
+            background: linear-gradient(135deg, #1e1b4b, #312e81);
+            color: #fff;
+            text-align: center;
+            padding: 120px 20px;
+            border-radius: 32px;
+            margin: 100px 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 30px 60px -15px rgba(30, 27, 75, 0.4);
+        }
+        .future-pattern {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(#6366f1 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.1;
         }
 
         /* --- FOOTER --- */
         footer {
-            padding: 50px 0;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 80px 0;
             text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            background: rgba(255,255,255,0.5);
         }
 
-        /* --- ANIMATION CLASSES --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        /* --- ANIMATIONS --- */
+        .fade-up { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .fade-up.active { opacity: 1; transform: translateY(0); }
 
-        /* --- MOBILE --- */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.8rem; }
-            .nav-links { display: none; } /* Simplified for MVP */
-            .product-section { grid-template-columns: 1fr; }
-            .product-image { order: -1; }
+        @media (max-width: 900px) {
+            .product-grid { grid-template-columns: 1fr; }
+            .mockup-wrapper { height: 500px; order: -1; }
+            .hero h1 { font-size: 3rem; }
         }
     </style>
 </head>
 <body>
 
+    <!-- BACKGROUND GRAPHICS -->
+    <div class="bg-graphics">
+        <div class="tech-grid"></div>
+        <div class="leaf-1"></div>
+        <div class="leaf-2"></div>
+    </div>
+
     <header>
         <div class="container">
             <nav>
-                <div class="logo">Envi<span>Quant</span>.</div>
-                <ul class="nav-links">
-                    <li><a href="#mission">Mission</a></li>
-                    <li><a href="#product">ecoScanAi</a></li>
-                    <li><a href="#tech">Technology</a></li>
-                </ul>
-                <a href="mailto:contact@enviquant.com" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">Contact Us</a>
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    EnviQuant
+                </div>
+                <div class="nav-menu">
+                    <a href="#mission">Philosophy</a>
+                    <a href="#products">ecoScanAi</a>
+                    <a href="#team">Engineers</a>
+                    <a href="#future">R&D</a>
+                </div>
             </nav>
         </div>
     </header>
 
+    <!-- HERO -->
     <section class="hero">
         <div class="container">
-            <div class="hero-content reveal">
-                <span class="tag">Pre-Seed Stage • Pilot Secured</span>
-                <h1>Turning Conscious Intention into <span class="text-gradient">Retail Revenue.</span></h1>
-                <p>EnviQuant builds the "Decision Layer" for modern retail. We empower consumers with data and help brands optimize the $27M sustainability blind spot.</p>
-                <div style="display: flex; gap: 20px;">
-                    <a href="#product" class="btn">View The Solution</a>
-                    <a href="#" style="padding: 12px 32px; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px;">Learn More</a>
-                </div>
+            <div class="hero-content fade-up">
+                <span class="badge">Next-Gen Infrastructure</span>
+                <h1>Quantifying the <br><span class="text-gradient">Environment.</span></h1>
+                <p>We are an advanced IT firm building the digital backbone for environmental accountability. Merging deep-tech architecture with sustainability.</p>
+                <a href="#products" class="btn-primary">Discover Our Tech</a>
             </div>
         </div>
     </section>
 
-    <section class="container">
-        <div class="stats-grid reveal">
-            <div class="stat-card">
-                <div class="stat-number">65%</div>
-                <div class="stat-label">Consumers want to buy Green</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">$135M</div>
-                <div class="stat-label">Urban Market Opportunity</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">50+</div>
-                <div class="stat-label">Local Materials Verified</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section-padding">
-        <div class="traction-strip">
-            <div class="container">
-                <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.9rem; letter-spacing: 1px;">TRUSTED PILOT PARTNER</p>
-                <div class="traction-logo">
-                    WHOLESALE CLUB <span class="pilot-badge">PILOT CONFIRMED</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="product" class="section-padding">
+    <!-- PRODUCT SHOWCASE (ecoScanAi) -->
+    <section id="products" class="section-padding">
         <div class="container">
-            <div class="product-section">
-                <div class="product-text reveal">
-                    <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Introducing <span class="text-gradient">ecoScanAi</span></h2>
-                    <p style="color: var(--text-muted); margin-bottom: 30px;">
-                        The first AI-powered app that scores products based on <strong>Bangladesh's real recycling infrastructure</strong>. We don't just show data; we drive decisions.
+            <div class="product-grid">
+                <div class="fade-up">
+                    <span class="badge">Flagship Product</span>
+                    <h2 style="font-size: 3rem; font-weight: 800; margin-bottom: 20px; line-height: 1;">ecoScanAi</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 40px;">
+                        A hyper-local retail intelligence engine. We empower consumers with instant transparency and equip retailers with actionable sales data through a proprietary scoring algorithm.
                     </p>
-                    <ul class="feature-list">
-                        <li>
-                            <span class="check-icon">✓</span>
-                            <div>
-                                <strong>Scan & Score</strong>
-                                <p style="font-size: 0.9rem; color: var(--text-muted);">Instant A-F grade based on 70/30 Proprietary Logic.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="check-icon">✓</span>
-                            <div>
-                                <strong>Smart Swap Engine</strong>
-                                <p style="font-size: 0.9rem; color: var(--text-muted);">Automatically suggests higher-margin, eco-friendly alternatives.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="check-icon">✓</span>
-                            <div>
-                                <strong>Green Rewards</strong>
-                                <p style="font-size: 0.9rem; color: var(--text-muted);">Integrated with Retail POS for instant loyalty points.</p>
-                            </div>
-                        </li>
-                    </ul>
+                    
+                    <div class="glass-card" style="padding: 30px; margin-bottom: 20px;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 10px;">🚀 GoLang Backend Architecture</h3>
+                        <p style="font-size: 0.95rem; color: var(--text-muted);">High-concurrency microservices handling real-time scan data with millisecond latency.</p>
+                    </div>
+                    <div class="glass-card" style="padding: 30px;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 10px;">📱 Flutter Native Performance</h3>
+                        <p style="font-size: 0.95rem; color: var(--text-muted);">Cross-platform efficiency ensuring seamless adoption across all devices.</p>
+                    </div>
                 </div>
-                <div class="product-image reveal">
-                    <img src="https://placehold.co/600x400/111/00ffa3?text=App+Mockup+Here" alt="ecoScanAi App Mockup">
+
+                <!-- MOCKUP AREA -->
+                <div class="mockup-wrapper fade-up">
+                    <!-- REPLACE WITH YOUR APP SCREENSHOT -->
+                    <img src="https://i.ibb.co.com/F4KrXF05/IMG-8550.jpg" alt="App Interface" class="mockup-img">
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="tech" class="section-padding" style="background: var(--bg-card);">
-        <div class="container" style="text-align: center;">
-            <h2 style="font-size: 2.5rem; margin-bottom: 60px;">Built for <span class="text-gradient">Scale</span></h2>
-            <div class="stats-grid" style="margin-top: 0;">
-                <div class="stat-card" style="border-color: var(--primary-dim);">
-                    <h3 style="margin-bottom: 10px;">GoLang</h3>
-                    <p class="stat-label">High-performance Backend Microservices</p>
+    <!-- TEAM SECTION (Professional IT Farm Vibe) -->
+    <section id="team" class="section-padding">
+        <div class="container">
+            <div style="text-align: center; max-width: 700px; margin: 0 auto 80px auto;" class="fade-up">
+                <span class="badge">The Architects</span>
+                <h2 style="font-size: 3rem; font-weight: 800; margin-bottom: 20px;">Engineering First.</h2>
+                <p style="font-size: 1.1rem; color: var(--text-muted);">
+                    Our leadership team combines deep-tech architecture with strategic market vision. We don't outsource; we build.
+                </p>
+            </div>
+
+            <div class="team-grid">
+                <!-- CEO -->
+                <div class="glass-card member-card fade-up">
+                    <span class="member-role">CEO & Lead Architect</span>
+                    <h3 class="member-name">Badhon</h3>
+                    <p class="member-tech">GoLang Specialist | System Design</p>
+                    <p class="member-desc">Leads overall strategy and client acquisition (e.g., Wholesale Club). Serves as the Lead GoLang Developer responsible for backend API architecture and scalability.</p>
                 </div>
-                <div class="stat-card" style="border-color: var(--primary-dim);">
-                    <h3 style="margin-bottom: 10px;">Flutter</h3>
-                    <p class="stat-label">Cross-platform Native Performance</p>
+
+                <!-- COO -->
+                <div class="glass-card member-card fade-up">
+                    <span class="member-role">COO & Core Engineer</span>
+                    <h3 class="member-name">Alif</h3>
+                    <p class="member-tech">GoLang Developer | Operations</p>
+                    <p class="member-desc">Manages project timelines and internal operations. Jointly responsible for backend optimization and API maintenance alongside the CEO.</p>
                 </div>
-                <div class="stat-card" style="border-color: var(--primary-dim);">
-                    <h3 style="margin-bottom: 10px;">Local Data</h3>
-                    <p class="stat-label">Proprietary Dhaka Waste Database</p>
+
+                <!-- CTO -->
+                <div class="glass-card member-card fade-up">
+                    <span class="member-role">CTO</span>
+                    <h3 class="member-name">Rayhan</h3>
+                    <p class="member-tech">Flutter Expert | Software Arch.</p>
+                    <p class="member-desc">Responsible for mobile app performance, software architecture standards, and ensuring seamless integration with backend systems.</p>
+                </div>
+
+                <!-- Lead Engineer -->
+                <div class="glass-card member-card fade-up">
+                    <span class="member-role">Lead Engineer</span>
+                    <h3 class="member-name">Kotha</h3>
+                    <p class="member-tech">Mobile App Development</p>
+                    <p class="member-desc">Leads mobile development execution, ensuring code quality and performance. Collaborates with the CTO on technical standards.</p>
+                </div>
+
+                <!-- CPO -->
+                <div class="glass-card member-card fade-up">
+                    <span class="member-role">CPO & Product Lead</span>
+                    <h3 class="member-name">Mahfuz</h3>
+                    <p class="member-tech">UI/UX | React | GoLang Collab</p>
+                    <p class="member-desc">Responsible for product design (UI/UX) and Admin Panel (React/Node). Works closely with the backend team on API integration.</p>
+                </div>
+
+                <!-- CRO -->
+                <div class="glass-card member-card fade-up">
+                    <span class="member-role">CRO & R&D Head</span>
+                    <h3 class="member-name">Rifat</h3>
+                    <p class="member-tech">Algorithm Logic | Frontend</p>
+                    <p class="member-desc">Manages algorithm logic (Eco-Score) and market research. Will lead frontend development for future modules.</p>
+                </div>
+
+                <!-- CFO -->
+                <div class="glass-card member-card fade-up">
+                    <span class="member-role">CFO</span>
+                    <h3 class="member-name">Lubna</h3>
+                    <p class="member-tech">Finance & Compliance</p>
+                    <p class="member-desc">Manages all finances, budgeting, legal compliance, and pricing models for enterprise partnerships.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- FUTURE SUSPENSE -->
+    <section id="future" class="container">
+        <div class="future-banner fade-up">
+            <div class="future-pattern"></div>
+            <div style="position: relative; z-index: 2;">
+                <span class="badge" style="background: rgba(255,255,255,0.1); color: #fff; border: none;">Confidential R&D</span>
+                <h2 style="margin-bottom: 20px;">Project: Quantification Protocol</h2>
+                <p style="color: #cbd5e1; max-width: 600px; margin: 0 auto;">
+                    We are currently developing the mathematical framework for the next generation of environmental assets. The future is measurable.
+                </p>
+                <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.5; letter-spacing: 2px;">COMING 2026</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
         <div class="container">
-            <h3 class="logo" style="margin-bottom: 20px;">Envi<span>Quant</span>.</h3>
-            <p>&copy; 2025 EnviQuant Analytics. Building Smart Bangladesh.</p>
+            <div class="logo" style="justify-content: center; margin-bottom: 10px;">EnviQuant</span>.</div>
+            <p style="margin-bottom: 30px; font-size: 0.9rem;">Dhaka, Bangladesh</p>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">&copy; 2025 EnviQuant. Building the Digital Infrastructure.</p>
         </div>
     </footer>
 
     <script>
-        window.addEventListener('scroll', reveal);
-        function reveal(){
-            var reveals = document.querySelectorAll('.reveal');
-            for(var i = 0; i < reveals.length; i++){
-                var windowheight = window.innerHeight;
-                var revealtop = reveals[i].getBoundingClientRect().top;
-                var revealpoint = 150;
-                if(revealtop < windowheight - revealpoint){
-                    reveals[i].classList.add('active');
+        // Fade Up Animation Trigger
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
                 }
-            }
-        }
-        // Trigger once on load
-        reveal();
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
