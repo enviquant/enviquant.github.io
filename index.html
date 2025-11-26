@@ -3,482 +3,435 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EnviQuant | Quantifying The Future</title>
-    <meta name="description" content="EnviQuant - Building the digital infrastructure for environmental quantification.">
+    <title>EnviQuant | Digital Infrastructure</title>
+    <meta name="description" content="EnviQuant - Advanced IT Infrastructure and Environmental Quantification Systems.">
 
-    <!-- Fonts: Plus Jakarta Sans (Modern, Geometric, Tech) -->
+    <!-- Fonts: Inter (Standard for High-End Tech) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <style>
-        /* --- VARIABLES & THEME --- */
+        /* --- 1. PREMIERE THEME --- */
         :root {
-            --bg-main: #f8f9fe; /* Very light purple tint base */
-            --text-main: #1e1b4b; /* Dark Navy */
-            --text-muted: #64748b;
-            --accent-purple: #8b5cf6;
-            --accent-green: #10b981; /* Eco touch */
-            --glass-bg: rgba(255, 255, 255, 0.7);
-            --glass-border: 1px solid rgba(255, 255, 255, 0.6);
-            --card-shadow: 0 20px 40px -10px rgba(139, 92, 246, 0.1);
+            --bg-white: #ffffff;
+            --bg-subtle: #fafafa;
+            --accent-purple: #7c3aed;
+            --accent-purple-light: rgba(124, 58, 237, 0.04);
+            --text-main: #111827;
+            --text-body: #4b5563;
+            --border-light: #e5e7eb;
+            --container-width: 1100px; /* Tighter container for "Info Heavy" feel */
         }
 
-        /* --- RESET --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        /* --- 2. RESET --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background: linear-gradient(135deg, #ffffff 0%, #f3f0ff 100%);
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-white);
             color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-            position: relative;
+            line-height: 1.7;
+            /* The Subtle Gradient you asked for */
+            background-image: radial-gradient(circle at 50% 0%, #f5f3ff 0%, #ffffff 60%);
+            background-repeat: no-repeat;
         }
 
-        /* --- BACKGROUND GRAPHICS (LEAF & GRID) --- */
-        .bg-graphics {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-            overflow: hidden;
-        }
-        /* Abstract Leaf Shape 1 */
-        .leaf-1 {
-            position: absolute;
-            top: -10%;
-            right: -5%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(167, 139, 250, 0.15) 0%, rgba(255,255,255,0) 70%);
-            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-            filter: blur(40px);
-            animation: float 10s infinite alternate;
-        }
-        /* Abstract Leaf Shape 2 */
-        .leaf-2 {
-            position: absolute;
-            bottom: -10%;
-            left: -10%;
-            width: 700px;
-            height: 700px;
-            background: radial-gradient(circle, rgba(52, 211, 153, 0.08) 0%, rgba(255,255,255,0) 70%); /* Subtle Green hint */
-            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-            filter: blur(50px);
-            animation: float 15s infinite alternate-reverse;
-        }
-        /* Tech Grid Overlay */
-        .tech-grid {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(139, 92, 246, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-            mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
-        }
-
-        @keyframes float {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            100% { transform: translate(20px, 40px) rotate(5deg); }
-        }
-
-        /* --- UTILITIES --- */
-        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
-        .section-padding { padding: 120px 0; }
+        /* --- 3. TYPOGRAPHY --- */
+        h1, h2, h3, h4 { letter-spacing: -0.02em; font-weight: 700; }
         .text-gradient {
-            background: linear-gradient(135deg, #1e1b4b 0%, #7c3aed 100%);
+            background: linear-gradient(90deg, #111827 0%, #7c3aed 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .badge {
-            display: inline-block;
-            padding: 6px 16px;
-            background: rgba(255, 255, 255, 0.8);
-            color: var(--accent-purple);
-            border-radius: 100px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            border: 1px solid rgba(139, 92, 246, 0.2);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        .section-label {
+            font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px;
+            color: var(--accent-purple); margin-bottom: 20px; display: block;
         }
 
-        /* --- HEADER --- */
+        /* --- 4. LAYOUT --- */
+        .container { max-width: var(--container-width); margin: 0 auto; padding: 0 24px; }
+        .section { padding: 120px 0; border-bottom: 1px solid var(--border-light); }
+        
+        /* --- 5. HEADER --- */
         header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(16px);
-            border-bottom: var(--glass-border);
-        }
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 80px;
-        }
-        .logo {
-            font-size: 1.6rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        /* Leaf Logo Icon (CSS Only) */
-        .logo-icon {
-            width: 24px;
-            height: 24px;
-            background: linear-gradient(135deg, #8b5cf6, #10b981);
-            border-radius: 0 50% 50% 50%;
-            transform: rotate(-45deg);
-        }
-        .nav-menu { display: flex; gap: 40px; }
-        .nav-menu a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: 0.3s;
-        }
-        .nav-menu a:hover { color: var(--accent-purple); }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-        .hero-content { max-width: 800px; position: relative; z-index: 2; }
-        .hero h1 {
-            font-size: clamp(3.5rem, 6vw, 5.5rem);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 30px;
-            letter-spacing: -2px;
-        }
-        .hero p {
-            font-size: 1.35rem;
-            color: var(--text-muted);
-            margin-bottom: 40px;
-            max-width: 650px;
-            font-weight: 400;
-        }
-        .btn-primary {
-            padding: 18px 48px;
-            background: #1e1b4b;
-            color: #fff;
-            font-weight: 600;
-            border-radius: 12px;
-            text-decoration: none;
-            transition: all 0.3s;
-            display: inline-block;
-            box-shadow: 0 10px 30px rgba(30, 27, 75, 0.2);
-        }
-        .btn-primary:hover { 
-            transform: translateY(-3px); 
-            box-shadow: 0 15px 40px rgba(30, 27, 75, 0.3);
-            background: #2e2a6b;
-        }
-
-        /* --- GLASS CARDS (For Product & Team) --- */
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: var(--glass-border);
-            border-radius: 24px;
-            padding: 40px;
-            box-shadow: var(--card-shadow);
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .glass-card:hover {
-            transform: translateY(-10px) scale(1.01);
+            position: fixed; top: 0; width: 100%; z-index: 100;
             background: rgba(255, 255, 255, 0.9);
-            border-color: rgba(139, 92, 246, 0.3);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-light);
         }
-
-        /* --- PRODUCT SECTION --- */
-        .product-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 60px;
-            align-items: center;
+        nav { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        
+        /* Logo Styling Update */
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            height: 100%; /* Ensure logo stays vertically centered */
         }
-        .mockup-wrapper {
-            position: relative;
-            height: 600px;
-            background: linear-gradient(to bottom right, #fdfbf7, #f0fdf4); /* Subtle organic gradient */
-            border-radius: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: inset 0 0 40px rgba(255, 255, 255, 0.8);
-        }
-        .mockup-img {
-            width: 85%;
-            max-width: 380px;
-            border-radius: 24px;
-            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.15);
-            transform: translateY(40px) rotate(-5deg);
-            transition: 0.5s ease-out;
-        }
-        .mockup-wrapper:hover .mockup-img { 
-            transform: translateY(20px) rotate(0deg); 
-        }
-
-        /* --- TEAM SECTION (Updated) --- */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
-        }
-        .member-role {
-            font-size: 0.75rem;
-            color: var(--accent-purple);
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            margin-bottom: 12px;
+        .logo img {
+            height: 40px; /* Adjust this value to fit your logo size */
+            width: auto;
             display: block;
         }
-        .member-name { font-size: 1.6rem; font-weight: 800; margin-bottom: 5px; color: var(--text-main); }
-        .member-tech {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #475569;
-            margin-bottom: 18px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
-        .member-desc { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
 
-        /* --- FUTURE SUSPENSE BANNER --- */
-        .future-banner {
-            background: linear-gradient(135deg, #1e1b4b, #312e81);
-            color: #fff;
+        .nav-links { display: flex; gap: 30px; } /* Flex container for desktop links */
+        .nav-links a {
+            font-size: 0.9rem; font-weight: 500; color: var(--text-body);
+            text-decoration: none; transition: 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent-purple); }
+
+        /* Mobile Menu Button */
+        .menu-btn { display: none; font-size: 1.5rem; cursor: pointer; color: var(--text-main); }
+
+        /* Mobile Menu Drawer */
+        .mobile-menu {
+            position: fixed; top: 80px; left: 0; width: 100%;
+            background: white; padding: 20px;
+            border-bottom: 1px solid var(--border-light);
+            transform: translateY(-150%);
+            transition: 0.3s ease;
+            z-index: 99;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             text-align: center;
-            padding: 120px 20px;
-            border-radius: 32px;
-            margin: 100px 0;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 30px 60px -15px rgba(30, 27, 75, 0.4);
         }
-        .future-pattern {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: radial-gradient(#6366f1 1px, transparent 1px);
-            background-size: 30px 30px;
-            opacity: 0.1;
+        .mobile-menu.active { transform: translateY(0); }
+        .mobile-menu a {
+            display: block; padding: 15px;
+            font-weight: 600; color: var(--text-main);
+            border-bottom: 1px solid var(--border-light);
+            text-decoration: none;
+        }
+        .mobile-menu a:last-child { border-bottom: none; }
+
+
+        /* --- 6. HERO (TEXT HEAVY) --- */
+        .hero { padding-top: 180px; padding-bottom: 120px; }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; margin-bottom: 30px; max-width: 900px; }
+        .hero p { font-size: 1.25rem; color: var(--text-body); max-width: 700px; margin-bottom: 40px; }
+        .meta-data {
+            display: flex; gap: 40px; margin-top: 60px; padding-top: 40px;
+            border-top: 1px solid var(--border-light);
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+        .meta-item h4 { font-size: 0.9rem; margin-bottom: 5px; }
+        .meta-item p { font-size: 0.9rem; color: var(--text-body); }
+
+        /* --- 7. VISION (SUSPENSE) --- */
+        .vision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+        .vision-text { font-size: 1.1rem; color: var(--text-body); }
+        
+        /* --- 8. TEAM (DETAILED LIST) --- */
+        .team-list { display: flex; flex-direction: column; gap: 40px; }
+        .team-member {
+            display: grid; grid-template-columns: 200px 1fr; gap: 40px;
+            padding: 40px; background: white;
+            border: 1px solid var(--border-light); border-radius: 12px;
+            transition: 0.3s;
+        }
+        .team-member:hover {
+            border-color: var(--accent-purple);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.05);
+        }
+        .member-meta h3 { font-size: 1.25rem; margin-bottom: 5px; }
+        .member-role { font-size: 0.85rem; color: var(--accent-purple); font-weight: 600; text-transform: uppercase; }
+        .member-bio { font-size: 0.95rem; color: var(--text-body); margin-top: 15px; }
+        .tech-tag {
+            display: inline-block; font-size: 0.75rem; font-weight: 600;
+            padding: 4px 10px; background: var(--bg-subtle); border: 1px solid var(--border-light);
+            border-radius: 4px; margin-top: 15px; color: var(--text-main);
+            margin-right: 5px; /* Add spacing between tags */
         }
 
-        /* --- FOOTER --- */
-        footer {
-            padding: 80px 0;
+        /* --- 9. PRODUCT (MINIMAL) --- */
+        .product-box {
+            background: var(--accent-purple-light);
+            border: 1px solid rgba(124, 58, 237, 0.1);
+            border-radius: 16px; padding: 60px;
             text-align: center;
-            border-top: 1px solid rgba(0,0,0,0.05);
-            background: rgba(255,255,255,0.5);
         }
 
-        /* --- ANIMATIONS --- */
-        .fade-up { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-        .fade-up.active { opacity: 1; transform: translateY(0); }
+        /* --- 10. FOOTER --- */
+        footer { padding: 80px 0; background: var(--bg-subtle); font-size: 0.9rem; color: var(--text-body); }
 
-        @media (max-width: 900px) {
-            .product-grid { grid-template-columns: 1fr; }
-            .mockup-wrapper { height: 500px; order: -1; }
-            .hero h1 { font-size: 3rem; }
+        /* MOBILE QUERY UPDATES */
+        @media (max-width: 768px) {
+            .nav-links { display: none; } /* Hide desktop links */
+            .menu-btn { display: block; } /* Show mobile menu button */
+            
+            .vision-grid, .team-member { grid-template-columns: 1fr; gap: 20px; padding: 20px; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero { padding-top: 140px; } /* Adjust top padding for mobile */
+            .meta-data { gap: 20px; }
+            .product-box { padding: 30px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- BACKGROUND GRAPHICS -->
-    <div class="bg-graphics">
-        <div class="tech-grid"></div>
-        <div class="leaf-1"></div>
-        <div class="leaf-2"></div>
-    </div>
-
     <header>
         <div class="container">
             <nav>
                 <div class="logo">
-                    <div class="logo-icon"></div>
-                    EnviQuant
+                    <!-- UPDATED: LOGO IMAGE -->
+                    <!-- Replace 'logo.png' with your actual logo file name -->
+                    <img src="https://i.ibb.co.com/TxQ3ctQG/IMG-8647-2-Photoroom.png" alt="EnviQuant Logo">
                 </div>
-                <div class="nav-menu">
-                    <a href="#mission">Philosophy</a>
-                    <a href="#products">ecoScanAi</a>
-                    <a href="#team">Engineers</a>
-                    <a href="#future">R&D</a>
+                
+                <!-- Desktop Navigation -->
+                <div class="nav-links">
+                    <a href="#philosophy">Philosophy</a>
+                    <a href="#infrastructure">Infrastructure</a>
+                    <a href="#leadership">Leadership</a>
+                    <a href="#research">R&D</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="menu-btn" onclick="toggleMenu()">
+                    <i class="ph ph-list"></i>
                 </div>
             </nav>
         </div>
     </header>
 
-    <!-- HERO -->
+    <!-- Mobile Menu Drawer -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#philosophy" onclick="toggleMenu()">Philosophy</a>
+        <a href="#infrastructure" onclick="toggleMenu()">Infrastructure</a>
+        <a href="#leadership" onclick="toggleMenu()">Leadership</a>
+        <a href="#research" onclick="toggleMenu()">R&D</a>
+    </div>
+
+    <!-- HERO: TEXT HEAVY & PROFESSIONAL -->
     <section class="hero">
         <div class="container">
-            <div class="hero-content fade-up">
-                <span class="badge">Next-Gen Infrastructure</span>
-                <h1>Quantifying the <br><span class="text-gradient">Environment.</span></h1>
-                <p>We are an advanced IT firm building the digital backbone for environmental accountability. Merging deep-tech architecture with sustainability.</p>
-                <a href="#products" class="btn-primary">Discover Our Tech</a>
+            <span class="section-label">System Architecture Firm</span>
+            <h1>Building the Mathematical Backbone for <span class="text-gradient">Environmental Quantification.</span></h1>
+            <p>
+                We are not a sustainability agency. We are an advanced IT infrastructure firm focused on Data Sovereignty, GoLang Microservices, and Algorithmic Verification. We turn environmental intention into immutable data points.
+            </p>
+            
+            <div class="meta-data">
+                <div class="meta-item">
+                    <h4>Headquarters</h4>
+                    <p>Dhaka, Bangladesh</p>
+                </div>
+                <div class="meta-item">
+                    <h4>Core Stack</h4>
+                    <p>GoLang / Flutter / PostgreSQL</p>
+                </div>
+                <div class="meta-item">
+                    <h4>Current Status</h4>
+                    <p>Pre-Seed / Retail Pilot</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- PRODUCT SHOWCASE (ecoScanAi) -->
-    <section id="products" class="section-padding">
+    <!-- PHILOSOPHY: THE VISION (SUSPENSE) -->
+    <section id="philosophy" class="section">
         <div class="container">
-            <div class="product-grid">
-                <div class="fade-up">
-                    <span class="badge">Flagship Product</span>
-                    <h2 style="font-size: 3rem; font-weight: 800; margin-bottom: 20px; line-height: 1;">ecoScanAi</h2>
-                    <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 40px;">
-                        A hyper-local retail intelligence engine. We empower consumers with instant transparency and equip retailers with actionable sales data through a proprietary scoring algorithm.
+            <span class="section-label">Our Directive</span>
+            <div class="vision-grid">
+                <div>
+                    <h2 style="font-size: 2.5rem; margin-bottom: 20px;">The Gap in Logic.</h2>
+                </div>
+                <div>
+                    <p class="vision-text" style="margin-bottom: 20px;">
+                        The current global approach to sustainability is based on emotion, not mathematics. EnviQuant was founded to solve the "Data Vacuum" in the supply chain.
                     </p>
-                    
-                    <div class="glass-card" style="padding: 30px; margin-bottom: 20px;">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 10px;">🚀 GoLang Backend Architecture</h3>
-                        <p style="font-size: 0.95rem; color: var(--text-muted);">High-concurrency microservices handling real-time scan data with millisecond latency.</p>
-                    </div>
-                    <div class="glass-card" style="padding: 30px;">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 10px;">📱 Flutter Native Performance</h3>
-                        <p style="font-size: 0.95rem; color: var(--text-muted);">Cross-platform efficiency ensuring seamless adoption across all devices.</p>
-                    </div>
-                </div>
-
-                <!-- MOCKUP AREA -->
-                <div class="mockup-wrapper fade-up">
-                    <!-- REPLACE WITH YOUR APP SCREENSHOT -->
-                    <img src="https://i.ibb.co.com/F4KrXF05/IMG-8550.jpg" alt="App Interface" class="mockup-img">
+                    <p class="vision-text">
+                        We are developing a multi-layered digital ecosystem. Our first deployment addresses the retail sector, but our roadmap extends into industrial quantification and automated verification protocols. We are building the operating system for the future economy.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- TEAM SECTION (Professional IT Farm Vibe) -->
-    <section id="team" class="section-padding">
+    <!-- INFRASTRUCTURE: ECOSCANAI -->
+    <section id="infrastructure" class="section">
         <div class="container">
-            <div style="text-align: center; max-width: 700px; margin: 0 auto 80px auto;" class="fade-up">
-                <span class="badge">The Architects</span>
-                <h2 style="font-size: 3rem; font-weight: 800; margin-bottom: 20px;">Engineering First.</h2>
-                <p style="font-size: 1.1rem; color: var(--text-muted);">
-                    Our leadership team combines deep-tech architecture with strategic market vision. We don't outsource; we build.
+            <span class="section-label">Deployment Module 01</span>
+            <div class="product-box">
+                <div style="margin-bottom: 30px;">
+                    <i class="ph-fill ph-scan" style="font-size: 3rem; color: var(--accent-purple);"></i>
+                </div>
+                <h2 style="font-size: 3rem; margin-bottom: 20px;">ecoScanAi</h2>
+                <p style="max-width: 600px; margin: 0 auto 40px auto; color: var(--text-body);">
+                    A consumer-facing interface for our proprietary 70/30 scoring engine. Currently utilized to capture hyper-local consumption data and verify retail inventory efficiency.
                 </p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <span class="tech-tag">Retail Intelligence</span>
+                    <span class="tech-tag">Consumer Data Acquisition</span>
+                    <span class="tech-tag">Automated Upselling Logic</span>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="team-grid">
+    <!-- LEADERSHIP: INFO HEAVY -->
+    <section id="leadership" class="section">
+        <div class="container">
+            <span class="section-label">Engineering Leadership</span>
+            <h2 style="font-size: 2.5rem; margin-bottom: 60px;">Architects & Operators.</h2>
+
+            <div class="team-list">
+                
                 <!-- CEO -->
-                <div class="glass-card member-card fade-up">
-                    <span class="member-role">CEO & Lead Architect</span>
-                    <h3 class="member-name">Badhon</h3>
-                    <p class="member-tech">GoLang Specialist | System Design</p>
-                    <p class="member-desc">Leads overall strategy and client acquisition (e.g., Wholesale Club). Serves as the Lead GoLang Developer responsible for backend API architecture and scalability.</p>
+                <div class="team-member">
+                    <div class="member-meta">
+                        <h3>Razibul Hasan Badhon</h3>
+                        <span class="member-role">CEO & Lead GoLang Architect</span>
+                    </div>
+                    <div>
+                        <p class="member-bio">
+                            Leads overall corporate strategy, investor relations, and high-level client acquisition (e.g., Wholesale Club). Beyond executive duties, serves as the Lead GoLang Developer, architecting the core backend API, designing system scalability, and ensuring data integrity across microservices.
+                        </p>
+                        <span class="tech-tag">System Architecture</span>
+                        <span class="tech-tag">GoLang</span>
+                        <span class="tech-tag">Business Strategy</span>
+                    </div>
                 </div>
 
                 <!-- COO -->
-                <div class="glass-card member-card fade-up">
-                    <span class="member-role">COO & Core Engineer</span>
-                    <h3 class="member-name">Alif</h3>
-                    <p class="member-tech">GoLang Developer | Operations</p>
-                    <p class="member-desc">Manages project timelines and internal operations. Jointly responsible for backend optimization and API maintenance alongside the CEO.</p>
+                <div class="team-member">
+                    <div class="member-meta">
+                        <h3>Abdullah Al Alif</h3>
+                        <span class="member-role">COO & Core Engineer</span>
+                    </div>
+                    <div>
+                        <p class="member-bio">
+                            Manages internal operations, deployment timelines, and team coordination. Operates as a Core GoLang Developer, jointly responsible for backend API development, query optimization, and maintaining server-side performance alongside the CEO.
+                        </p>
+                        <span class="tech-tag">Operations</span>
+                        <span class="tech-tag">GoLang</span>
+                        <span class="tech-tag">Database Logic</span>
+                    </div>
                 </div>
 
                 <!-- CTO -->
-                <div class="glass-card member-card fade-up">
-                    <span class="member-role">CTO</span>
-                    <h3 class="member-name">Rayhan</h3>
-                    <p class="member-tech">Flutter Expert | Software Arch.</p>
-                    <p class="member-desc">Responsible for mobile app performance, software architecture standards, and ensuring seamless integration with backend systems.</p>
-                </div>
-
-                <!-- Lead Engineer -->
-                <div class="glass-card member-card fade-up">
-                    <span class="member-role">Lead Engineer</span>
-                    <h3 class="member-name">Kotha</h3>
-                    <p class="member-tech">Mobile App Development</p>
-                    <p class="member-desc">Leads mobile development execution, ensuring code quality and performance. Collaborates with the CTO on technical standards.</p>
-                </div>
-
-                <!-- CPO -->
-                <div class="glass-card member-card fade-up">
-                    <span class="member-role">CPO & Product Lead</span>
-                    <h3 class="member-name">Mahfuz</h3>
-                    <p class="member-tech">UI/UX | React | GoLang Collab</p>
-                    <p class="member-desc">Responsible for product design (UI/UX) and Admin Panel (React/Node). Works closely with the backend team on API integration.</p>
+                <div class="team-member">
+                    <div class="member-meta">
+                        <h3>Rayhan Mahmud</h3>
+                        <span class="member-role">Chief Technology Officer</span>
+                    </div>
+                    <div>
+                        <p class="member-bio">
+                            Responsible for the entire mobile ecosystem architecture. Leads the Flutter development team, defines software standards, and ensures seamless, secure integration between the mobile client and the backend infrastructure.
+                        </p>
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">Software Architecture</span>
+                        <span class="tech-tag">Native Performance</span>
+                    </div>
                 </div>
 
                 <!-- CRO -->
-                <div class="glass-card member-card fade-up">
-                    <span class="member-role">CRO & R&D Head</span>
-                    <h3 class="member-name">Rifat</h3>
-                    <p class="member-tech">Algorithm Logic | Frontend</p>
-                    <p class="member-desc">Manages algorithm logic (Eco-Score) and market research. Will lead frontend development for future modules.</p>
+                <div class="team-member">
+                    <div class="member-meta">
+                        <h3>Rifat Hassan</h3>
+                        <span class="member-role">Chief Research Officer</span>
+                    </div>
+                    <div>
+                        <p class="member-bio">
+                            Leads Research & Development. Responsible for the core algorithm logic (Eco-Score) and competitive market analysis. Currently developing frontend capabilities for upcoming R&D modules.
+                        </p>
+                        <span class="tech-tag">Algorithms</span>
+                        <span class="tech-tag">Market Research</span>
+                        <span class="tech-tag">Frontend R&D</span>
+                    </div>
                 </div>
+
+
 
                 <!-- CFO -->
-                <div class="glass-card member-card fade-up">
-                    <span class="member-role">CFO</span>
-                    <h3 class="member-name">Lubna</h3>
-                    <p class="member-tech">Finance & Compliance</p>
-                    <p class="member-desc">Manages all finances, budgeting, legal compliance, and pricing models for enterprise partnerships.</p>
+                <div class="team-member">
+                    <div class="member-meta">
+                        <h3>Lubna Jahan Lipa</h3>
+                        <span class="member-role">Chief Financial Officer</span>
+                    </div>
+                    <div>
+                        <p class="member-bio">
+                            Manages corporate finances, budgeting, and pricing models. Ensures legal compliance for enterprise partnerships and oversees the financial structuring of future assets.
+                        </p>
+                        <span class="tech-tag">Financial Modeling</span>
+                        <span class="tech-tag">Compliance</span>
+                    </div>
+                </div>
+
+                <!-- CPO -->
+                <div class="team-member">
+                    <div class="member-meta">
+                        <h3>Mahfuzur Rahman</h3>
+                        <span class="member-role">Chief Product Officer</span>
+                    </div>
+                    <div>
+                        <p class="member-bio">
+                            Oversees product design (UI/UX) and the B2B Admin Panel (React/Node). Bridges the gap between design and engineering by working closely with the GoLang backend team for API integration.
+                        </p>
+                        <span class="tech-tag">Product Design</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">API Integration</span>
+                    </div>
+                </div>
+
+                <!-- Lead Engineer -->
+                <div class="team-member">
+                    <div class="member-meta">
+                        <h3>Fahmida Kotha</h3>
+                        <span class="member-role">Lead Mobile Engineer</span>
+                    </div>
+                    <div>
+                        <p class="member-bio">
+                            Executes the mobile development strategy. Focuses on code quality, UI responsiveness, and performance optimization. Collaborates directly with the CTO to implement architectural standards.
+                        </p>
+                        <span class="tech-tag">Mobile Dev</span>
+                        <span class="tech-tag">Code Quality</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FUTURE (SECRETIVE) -->
+    <section id="research" class="section" style="border-bottom: none;">
+        <div class="container">
+            <div style="background: #111827; color: white; padding: 80px; border-radius: 16px; text-align: center;">
+                <i class="ph-fill ph-lock-key" style="font-size: 3rem; margin-bottom: 20px; color: var(--accent-purple);"></i>
+                <h2 style="margin-bottom: 20px;">Phase II: Quantification Protocol</h2>
+                <p style="max-width: 600px; margin: 0 auto; color: #9ca3af;">
+                    We are currently developing the mathematical framework for the next generation of environmental assets. This infrastructure is currently in closed beta.
+                </p>
+                <div style="margin-top: 40px; font-size: 0.9rem; letter-spacing: 2px; opacity: 0.5;">
+                    COMING 2026
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FUTURE SUSPENSE -->
-    <section id="future" class="container">
-        <div class="future-banner fade-up">
-            <div class="future-pattern"></div>
-            <div style="position: relative; z-index: 2;">
-                <span class="badge" style="background: rgba(255,255,255,0.1); color: #fff; border: none;">Confidential R&D</span>
-                <h2 style="margin-bottom: 20px;">Project: Quantification Protocol</h2>
-                <p style="color: #cbd5e1; max-width: 600px; margin: 0 auto;">
-                    We are currently developing the mathematical framework for the next generation of environmental assets. The future is measurable.
-                </p>
-                <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.5; letter-spacing: 2px;">COMING 2026</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
     <footer>
-        <div class="container">
-            <div class="logo" style="justify-content: center; margin-bottom: 10px;">EnviQuant</span>.</div>
-            <p style="margin-bottom: 30px; font-size: 0.9rem;">Dhaka, Bangladesh</p>
-            <p style="font-size: 0.8rem; color: var(--text-muted);">&copy; 2025 EnviQuant. Building the Digital Infrastructure.</p>
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+            <div class="logo">
+                <!-- Optional: Footer Logo Image -->
+                <img src="logo.png" alt="EnviQuant Logo" style="height: 30px;">
+            </div>
+            <div>
+                &copy; 2025 EnviQuant Analytics. All rights reserved.
+            </div>
         </div>
     </footer>
 
+    <!-- Mobile Menu Logic -->
     <script>
-        // Fade Up Animation Trigger
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+        }
     </script>
+
 </body>
 </html>
