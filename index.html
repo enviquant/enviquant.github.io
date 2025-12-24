@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EnviQuant | Digital Infrastructure</title>
-    <meta name="description" content="EnviQuant - Advanced IT Infrastructure and Environmental Quantification Systems.">
+    <title>EnviQuant | Advanced Environmental Intelligence</title>
+    <meta name="description" content="EnviQuant - Building the digital infrastructure for a transparent economy. Flagship Product: Ki Khai?">
 
-    <!-- Fonts: Inter (Standard for High-End Tech) -->
+    <!-- Fonts: Inter (Standard for High-End Tech/Govt) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -15,16 +15,26 @@
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <style>
-        /* --- 1. PREMIERE THEME --- */
+        /* --- 1. THEME: "NATIONAL INTELLIGENCE GRADIENT" --- */
         :root {
             --bg-white: #ffffff;
-            --bg-subtle: #fafafa;
-            --accent-purple: #7c3aed;
-            --accent-purple-light: rgba(124, 58, 237, 0.04);
-            --text-main: #111827;
-            --text-body: #4b5563;
-            --border-light: #e5e7eb;
-            --container-width: 1100px; /* Tighter container for "Info Heavy" feel */
+            --bg-dark: #0f172a;
+            
+            /* Gradient Colors */
+            --grad-start: #f8fafc;
+            --grad-end: #eef2ff;
+            --accent-primary: #10b981; /* Green */
+            --accent-tech: #6366f1;    /* Indigo */
+            --accent-dark: #1e1b4b;    /* Deep Blue */
+            --accent-warn: #f59e0b;    /* Amber */
+            --accent-danger: #ef4444;  /* Red */
+            
+            --text-main: #0f172a;
+            --text-body: #475569;
+            --text-light: #94a3b8;
+            
+            --border-light: #e2e8f0;
+            --container-width: 1200px;
         }
 
         /* --- 2. RESET --- */
@@ -35,139 +45,233 @@
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-white);
             color: var(--text-main);
-            line-height: 1.7;
-            /* The Subtle Gradient you asked for */
-            background-image: radial-gradient(circle at 50% 0%, #f5f3ff 0%, #ffffff 60%);
-            background-repeat: no-repeat;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* --- 3. TYPOGRAPHY --- */
-        h1, h2, h3, h4 { letter-spacing: -0.02em; font-weight: 700; }
+        /* --- 3. UTILITIES --- */
+        .container { max-width: var(--container-width); margin: 0 auto; padding: 0 24px; }
+        .section { padding: 100px 0; border-bottom: 1px solid var(--border-light); position: relative; }
+        
         .text-gradient {
-            background: linear-gradient(90deg, #111827 0%, #7c3aed 100%);
+            background: linear-gradient(90deg, #1e1b4b 0%, #6366f1 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .section-label {
-            font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px;
-            color: var(--accent-purple); margin-bottom: 20px; display: block;
+        
+        /* Badges */
+        .badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+            padding: 6px 14px; border-radius: 100px; margin-bottom: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: 0.3s;
+        }
+        .badge:hover { transform: translateY(-1px); }
+        
+        .badge-pulse-green {
+            width: 8px; height: 8px; border-radius: 50%; background: var(--accent-primary);
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            animation: pulse-green 2s infinite;
+        }
+        .badge-pulse-yellow {
+            width: 8px; height: 8px; border-radius: 50%; background: var(--accent-warn);
+            box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+            animation: pulse-yellow 2s infinite;
+        }
+        
+        .badge-status { background: #f8fafc; color: var(--text-body); border: 1px solid var(--border-light); }
+        .badge-tech { background: #e0e7ff; color: var(--accent-tech); border: 1px solid #c7d2fe; }
+        .badge-danger { background: #fee2e2; color: var(--accent-danger); border: 1px solid #fecaca; }
+
+        @keyframes pulse-green {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+        @keyframes pulse-yellow {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(245, 158, 11, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
         }
 
-        /* --- 4. LAYOUT --- */
-        .container { max-width: var(--container-width); margin: 0 auto; padding: 0 24px; }
-        .section { padding: 120px 0; border-bottom: 1px solid var(--border-light); }
-        
-        /* --- 5. HEADER --- */
+        /* --- 4. HEADER --- */
         header {
             position: fixed; top: 0; width: 100%; z-index: 100;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-light);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
         }
         nav { display: flex; justify-content: space-between; align-items: center; height: 80px; }
         
-        /* Logo Styling Update */
-        .logo { 
-            display: flex; 
-            align-items: center; 
-            height: 100%; /* Ensure logo stays vertically centered */
-        }
-        .logo img {
-            height: 40px; /* Adjust this value to fit your logo size */
-            width: auto;
-            display: block;
-        }
+        .brand-logo { height: 45px; width: auto; }
 
-        .nav-links { display: flex; gap: 30px; } /* Flex container for desktop links */
+        .nav-links { display: flex; gap: 30px; }
         .nav-links a {
-            font-size: 0.9rem; font-weight: 500; color: var(--text-body);
+            font-size: 0.9rem; font-weight: 600; color: var(--text-body);
             text-decoration: none; transition: 0.2s;
         }
-        .nav-links a:hover { color: var(--accent-purple); }
-
-        /* Mobile Menu Button */
-        .menu-btn { display: none; font-size: 1.5rem; cursor: pointer; color: var(--text-main); }
-
-        /* Mobile Menu Drawer */
-        .mobile-menu {
-            position: fixed; top: 80px; left: 0; width: 100%;
-            background: white; padding: 20px;
-            border-bottom: 1px solid var(--border-light);
-            transform: translateY(-150%);
-            transition: 0.3s ease;
-            z-index: 99;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            text-align: center;
-        }
-        .mobile-menu.active { transform: translateY(0); }
-        .mobile-menu a {
-            display: block; padding: 15px;
-            font-weight: 600; color: var(--text-main);
-            border-bottom: 1px solid var(--border-light);
-            text-decoration: none;
-        }
-        .mobile-menu a:last-child { border-bottom: none; }
-
-
-        /* --- 6. HERO (TEXT HEAVY) --- */
-        .hero { padding-top: 180px; padding-bottom: 120px; }
-        .hero h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; margin-bottom: 30px; max-width: 900px; }
-        .hero p { font-size: 1.25rem; color: var(--text-body); max-width: 700px; margin-bottom: 40px; }
-        .meta-data {
-            display: flex; gap: 40px; margin-top: 60px; padding-top: 40px;
-            border-top: 1px solid var(--border-light);
-            flex-wrap: wrap; /* Allow wrapping on smaller screens */
-        }
-        .meta-item h4 { font-size: 0.9rem; margin-bottom: 5px; }
-        .meta-item p { font-size: 0.9rem; color: var(--text-body); }
-
-        /* --- 7. VISION (SUSPENSE) --- */
-        .vision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
-        .vision-text { font-size: 1.1rem; color: var(--text-body); }
+        .nav-links a:hover { color: var(--accent-tech); }
         
-        /* --- 8. TEAM (DETAILED LIST) --- */
-        .team-list { display: flex; flex-direction: column; gap: 40px; }
-        .team-member {
-            display: grid; grid-template-columns: 200px 1fr; gap: 40px;
-            padding: 40px; background: white;
-            border: 1px solid var(--border-light); border-radius: 12px;
+        .cta-btn {
+            background: var(--text-main); color: white; padding: 10px 24px; border-radius: 8px;
+            text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+        .cta-btn:hover { background: var(--accent-tech); transform: translateY(-1px); }
+
+        /* --- 5. HERO SECTION --- */
+        .hero { 
+            padding-top: 180px; padding-bottom: 120px; 
+            background: radial-gradient(circle at 50% -20%, #eff6ff 0%, #ffffff 80%);
+            position: relative; overflow: hidden;
+        }
+        /* Abstract Background Shape */
+        .hero::before {
+            content: ''; position: absolute; top: -50%; left: -10%; width: 50%; height: 100%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
+            z-index: 0; pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; text-align: left; }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; margin-bottom: 24px; max-width: 950px; letter-spacing: -1px; }
+        .hero p { font-size: 1.25rem; color: var(--text-body); max-width: 700px; margin-bottom: 40px; }
+        
+        .status-bar {
+            display: inline-flex; gap: 15px; flex-wrap: wrap; margin-bottom: 30px;
+        }
+
+        /* --- UPDATED STATS DASHBOARD --- */
+        .hero-stats-wrapper {
+            margin-top: 60px;
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            box-shadow: 0 20px 50px -10px rgba(0,0,0,0.08);
+            overflow: hidden;
+            position: relative;
+            max-width: 1000px;
+        }
+
+        .stats-header {
+            background: #f8fafc;
+            padding: 12px 25px;
+            border-bottom: 1px solid var(--border-light);
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.7rem; font-weight: 700; color: var(--text-body); letter-spacing: 1px; text-transform: uppercase;
+        }
+
+        .live-indicator { display: flex; align-items: center; gap: 8px; }
+        .blink-dot { width: 6px; height: 6px; background: var(--accent-primary); border-radius: 50%; animation: pulse-green 1.5s infinite; }
+
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            padding: 25px; gap: 25px;
+            background: radial-gradient(circle at 50% 100%, #f8fafc 0%, #ffffff 50%);
+        }
+
+        .stat-card {
+            position: relative;
+            padding: 20px;
+            border-radius: 12px;
+            background: white;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 4px 6px -2px rgba(0,0,0,0.03);
+            display: flex; align-items: center; gap: 15px;
+            transition: transform 0.3s ease;
+            overflow: hidden;
+        }
+        .stat-card:hover { transform: translateY(-3px); border-color: var(--accent-tech); box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.1); }
+
+        .stat-icon {
+            width: 44px; height: 44px;
+            background: #f1f5f9; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; color: var(--accent-tech);
+            flex-shrink: 0; z-index: 1;
+        }
+
+        .stat-data { z-index: 1; }
+        .stat-data h3 { font-size: 1.6rem; font-weight: 800; color: var(--text-main); line-height: 1; margin-bottom: 4px; letter-spacing: -0.5px; }
+        .stat-data p { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-light); letter-spacing: 0.5px; }
+
+        .mini-chart {
+            position: absolute; bottom: 0; right: 0; width: 70%; height: 40px;
+            pointer-events: none; opacity: 0.6; z-index: 0;
+            stroke: var(--accent-tech); stroke-width: 2; fill: none;
+        }
+
+        /* --- 6. NEW: CRISIS SECTION --- */
+        .crisis-section { background: #ffffff; }
+        .crisis-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 50px; }
+        .crisis-card {
+            padding: 40px; border-radius: 16px; border: 1px solid var(--border-light);
+            background: white; transition: 0.3s; position: relative; overflow: hidden;
+        }
+        .crisis-card.health { border-left: 5px solid var(--accent-danger); background: linear-gradient(180deg, #fff1f2 0%, #ffffff 50%); }
+        .crisis-card.eco { border-left: 5px solid #475569; background: linear-gradient(180deg, #f1f5f9 0%, #ffffff 50%); }
+        
+        .crisis-card h3 { font-size: 1.8rem; margin-bottom: 15px; }
+        .crisis-card p { font-size: 1.05rem; color: var(--text-body); margin-bottom: 25px; }
+        .stat-highlight { font-size: 3rem; font-weight: 800; display: block; line-height: 1; margin-bottom: 10px; }
+        
+        /* --- 7. PRODUCT: KI KHAI? --- */
+        .product-section { background: #f8fafc; }
+        .split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        
+        .feature-card {
+            padding: 30px; border-radius: 16px; border: 1px solid var(--border-light); 
+            background: white;
+            margin-bottom: 20px; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+        .feature-card:hover { transform: translateY(-5px); border-color: var(--accent-tech); box-shadow: 0 20px 30px -10px rgba(99, 102, 241, 0.1); }
+        
+        .icon-box { 
+            width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            margin-bottom: 20px; font-size: 1.5rem;
+        }
+
+        /* --- 8. TECH STACK --- */
+        .tech-section { background: var(--bg-dark); color: white; position: relative; overflow: hidden; }
+        .tech-section::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px; pointer-events: none;
+        }
+        
+        .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px; margin-top: 60px; position: relative; z-index: 1; }
+        .tech-item { background: rgba(255,255,255,0.03); padding: 30px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(5px); }
+        .tech-item h3 { font-size: 1.2rem; margin-bottom: 10px; color: white; }
+        .tech-item p { color: var(--text-light); font-size: 0.9rem; }
+        .code-tag { 
+            font-family: 'Courier New', monospace; background: rgba(99, 102, 241, 0.2); 
+            padding: 2px 8px; border-radius: 4px; color: #a5b4fc; font-weight: 600;
+        }
+
+        /* --- 9. TEAM --- */
+        .team-section { background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%); }
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; margin-top: 40px; }
+        .team-card {
+            padding: 35px; border: 1px solid var(--border-light); border-radius: 16px; background: white;
             transition: 0.3s;
         }
-        .team-member:hover {
-            border-color: var(--accent-purple);
-            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.05);
-        }
-        .member-meta h3 { font-size: 1.25rem; margin-bottom: 5px; }
-        .member-role { font-size: 0.85rem; color: var(--accent-purple); font-weight: 600; text-transform: uppercase; }
-        .member-bio { font-size: 0.95rem; color: var(--text-body); margin-top: 15px; }
-        .tech-tag {
-            display: inline-block; font-size: 0.75rem; font-weight: 600;
-            padding: 4px 10px; background: var(--bg-subtle); border: 1px solid var(--border-light);
-            border-radius: 4px; margin-top: 15px; color: var(--text-main);
-            margin-right: 5px; /* Add spacing between tags */
-        }
-
-        /* --- 9. PRODUCT (MINIMAL) --- */
-        .product-box {
-            background: var(--accent-purple-light);
-            border: 1px solid rgba(124, 58, 237, 0.1);
-            border-radius: 16px; padding: 60px;
-            text-align: center;
-        }
+        .team-card:hover { border-color: var(--accent-tech); box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05); }
+        .role { color: var(--accent-tech); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 15px; display: block; letter-spacing: 1px; }
+        .tech-stack-list { margin-top: 20px; display: flex; gap: 8px; flex-wrap: wrap; }
+        .mini-tag { font-size: 0.7rem; padding: 5px 10px; background: #f1f5f9; border-radius: 6px; font-weight: 600; color: var(--text-body); }
 
         /* --- 10. FOOTER --- */
-        footer { padding: 80px 0; background: var(--bg-subtle); font-size: 0.9rem; color: var(--text-body); }
+        footer { padding: 80px 0; background: #ffffff; font-size: 0.9rem; border-top: 1px solid var(--border-light); }
 
-        /* MOBILE QUERY UPDATES */
+        /* MOBILE */
         @media (max-width: 768px) {
-            .nav-links { display: none; } /* Hide desktop links */
-            .menu-btn { display: block; } /* Show mobile menu button */
-            
-            .vision-grid, .team-member { grid-template-columns: 1fr; gap: 20px; padding: 20px; }
+            .split-grid, .crisis-grid { grid-template-columns: 1fr; gap: 40px; }
             .hero h1 { font-size: 2.5rem; }
-            .hero { padding-top: 140px; } /* Adjust top padding for mobile */
-            .meta-data { gap: 20px; }
-            .product-box { padding: 30px; }
+            .nav-links { display: none; }
+            .hero { padding-top: 140px; }
+            .stats-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -176,278 +280,284 @@
     <header>
         <div class="container">
             <nav>
-                <div class="logo">
-                    <!-- UPDATED: LOGO IMAGE -->
-                    <!-- Replace 'logo.png' with your actual logo file name -->
-                    <img src="https://i.ibb.co.com/TxQ3ctQG/IMG-8647-2-Photoroom.png" alt="EnviQuant Logo">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <!-- EnviQuant Logo -->
+                    <img src="https://i.ibb.co.com/TxQ3ctQG/IMG-8647-2-Photoroom.png" alt="EnviQuant Logo" class="brand-logo">
                 </div>
                 
-                <!-- Desktop Navigation -->
                 <div class="nav-links">
-                    <a href="#philosophy">Philosophy</a>
-                    <a href="#infrastructure">Infrastructure</a>
-                    <a href="#leadership">Leadership</a>
-                    <a href="#research">R&D</a>
+                    <a href="#about">Philosophy</a>
+                    <a href="#crisis" style="color: var(--accent-danger);">The Crisis</a>
+                    <a href="#product">Ki Khai?</a>
+                    <a href="#technology">Tech Stack</a>
+                    <a href="#team">Task Force</a>
                 </div>
 
-                <!-- Mobile Menu Button -->
-                <div class="menu-btn" onclick="toggleMenu()">
-                    <i class="ph ph-list"></i>
-                </div>
+                <a href="https://kikhai.github.io/" target="_blank" class="cta-btn">
+                    View Prototype <i class="ph-bold ph-arrow-right"></i>
+                </a>
             </nav>
         </div>
     </header>
 
-    <!-- Mobile Menu Drawer -->
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="#philosophy" onclick="toggleMenu()">Philosophy</a>
-        <a href="#infrastructure" onclick="toggleMenu()">Infrastructure</a>
-        <a href="#leadership" onclick="toggleMenu()">Leadership</a>
-        <a href="#research" onclick="toggleMenu()">R&D</a>
-    </div>
-
-    <!-- HERO: TEXT HEAVY & PROFESSIONAL -->
-    <section class="hero">
-        <div class="container">
-            <span class="section-label">System Architecture Firm</span>
-            <h1>Building the Mathematical Backbone for <span class="text-gradient">Environmental Quantification.</span></h1>
+    <!-- HERO: ENVIQUANT (PARENT) -->
+    <section class="hero" id="about">
+        <div class="container hero-content">
+            <div class="status-bar">
+                <a href="https://kikhai.github.io/" target="_blank" style="text-decoration: none;">
+                    <span class="badge badge-status"><div class="badge-pulse-green"></div> Prototype Pre-Built</span>
+                </a>
+                <span class="badge badge-status"><div class="badge-pulse-yellow"></div> Model Training in Progress</span>
+            </div>
+            
+            <h1>Building the Operating System for a <span class="text-gradient">Transparent Economy.</span></h1>
             <p>
-                We are not a sustainability agency. We are an advanced IT infrastructure firm focused on Data Sovereignty, GoLang Microservices, and Algorithmic Verification. We turn environmental intention into immutable data points.
+                <strong>EnviQuant</strong> is the digital infrastructure layer. We turn environmental ambiguity into immutable data points using advanced GoLang microservices and AI verification.
             </p>
             
-            <div class="meta-data">
-                <div class="meta-item">
-                    <h4>Headquarters</h4>
-                    <p>Dhaka, Bangladesh</p>
+            <a href="#product" class="cta-btn" style="background: var(--accent-tech); box-shadow: 0 10px 20px -5px rgba(99, 102, 241, 0.4);">
+                Deploy Flagship: Ki Khai?
+            </a>
+            
+            <!-- NEW: DASHBOARD STYLE STATS -->
+            <div class="hero-stats-wrapper">
+                <div class="stats-header">
+                    <div class="live-indicator">
+                        <span class="blink-dot"></span> System Metrics
+                    </div>
+                    <div style="color: var(--accent-primary); font-size: 0.65rem; border: 1px solid var(--accent-primary); padding: 2px 6px; border-radius: 4px;">
+                        INFRASTRUCTURE ONLINE
+                    </div>
                 </div>
-                <div class="meta-item">
-                    <h4>Core Stack</h4>
-                    <p>GoLang / Flutter / PostgreSQL</p>
-                </div>
-                <div class="meta-item">
-                    <h4>Current Status</h4>
-                    <p>Pre-Seed / Retail Pilot</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PHILOSOPHY: THE VISION (SUSPENSE) -->
-    <section id="philosophy" class="section">
-        <div class="container">
-            <span class="section-label">Our Directive</span>
-            <div class="vision-grid">
-                <div>
-                    <h2 style="font-size: 2.5rem; margin-bottom: 20px;">The Gap in Logic.</h2>
-                </div>
-                <div>
-                    <p class="vision-text" style="margin-bottom: 20px;">
-                        The current global approach to sustainability is based on emotion, not mathematics. EnviQuant was founded to solve the "Data Vacuum" in the supply chain.
-                    </p>
-                    <p class="vision-text">
-                        We are developing a multi-layered digital ecosystem. Our first deployment addresses the retail sector, but our roadmap extends into industrial quantification and automated verification protocols. We are building the operating system for the future economy.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- INFRASTRUCTURE: ECOSCANAI -->
-    <section id="infrastructure" class="section">
-        <div class="container">
-            <span class="section-label">Deployment Module 01</span>
-            <div class="product-box">
-                <div style="margin-bottom: 30px;">
-                    <i class="ph-fill ph-scan" style="font-size: 3rem; color: var(--accent-purple);"></i>
-                </div>
-                <h2 style="font-size: 3rem; margin-bottom: 20px;">ecoScanAi</h2>
-                <p style="max-width: 600px; margin: 0 auto 40px auto; color: var(--text-body);">
-                    A consumer-facing interface for our proprietary 70/30 scoring engine. Currently utilized to capture hyper-local consumption data and verify retail inventory efficiency.
-                </p>
-                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                    <span class="tech-tag">Retail Intelligence</span>
-                    <span class="tech-tag">Consumer Data Acquisition</span>
-                    <span class="tech-tag">Automated Upselling Logic</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- LEADERSHIP: INFO HEAVY -->
-    <section id="leadership" class="section">
-        <div class="container">
-            <span class="section-label">Engineering Leadership</span>
-            <h2 style="font-size: 2.5rem; margin-bottom: 60px;">Architects & Operators.</h2>
-
-            <div class="team-list">
                 
-                <!-- CEO -->
-                <div class="team-member">
-                    <div class="member-meta">
-                        <h3>Razibul Hasan Badhon</h3>
-                        <span class="member-role">CEO & Lead GoLang Architect</span>
+                <div class="stats-grid">
+                    <!-- Stat 1 -->
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="ph-duotone ph-users-three"></i></div>
+                        <div class="stat-data">
+                            <h3>180M+</h3>
+                            <p>Consumer Reach</p>
+                        </div>
+                        <svg class="mini-chart" viewBox="0 0 100 40" preserveAspectRatio="none">
+                            <path d="M0,35 Q20,20 40,30 T80,15 T100,5" opacity="0.4" />
+                            <path d="M0,35 L100,35" stroke-dasharray="2,2" opacity="0.2" />
+                        </svg>
                     </div>
-                    <div>
-                        <p class="member-bio">
-                            Leads overall corporate strategy, investor relations, and high-level client acquisition (e.g., Wholesale Club). Beyond executive duties, serves as the Lead GoLang Developer, architecting the core backend API, designing system scalability, and ensuring data integrity across microservices.
-                        </p>
-                        <span class="tech-tag">System Architecture</span>
-                        <span class="tech-tag">GoLang</span>
-                        <span class="tech-tag">Business Strategy</span>
+
+                    <!-- Stat 2 -->
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="ph-duotone ph-flask"></i></div>
+                        <div class="stat-data">
+                            <h3>5,000+</h3>
+                            <p>Chemicals Mapped</p>
+                        </div>
+                        <svg class="mini-chart" viewBox="0 0 100 40" preserveAspectRatio="none">
+                            <path d="M0,20 Q25,35 50,15 T100,25" opacity="0.4" />
+                        </svg>
+                    </div>
+
+                    <!-- Stat 3 -->
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="ph-duotone ph-lightning"></i></div>
+                        <div class="stat-data">
+                            <h3>< 100ms</h3>
+                            <p>Real-time Latency</p>
+                        </div>
+                        <svg class="mini-chart" viewBox="0 0 100 40" preserveAspectRatio="none">
+                            <rect x="10" y="20" width="5" height="15" opacity="0.3"/>
+                            <rect x="20" y="10" width="5" height="25" opacity="0.5"/>
+                            <rect x="30" y="15" width="5" height="20" opacity="0.4"/>
+                            <rect x="40" y="5" width="5" height="30" opacity="0.6"/>
+                            <rect x="50" y="18" width="5" height="17" opacity="0.3"/>
+                            <rect x="60" y="12" width="5" height="23" opacity="0.5"/>
+                        </svg>
                     </div>
                 </div>
-
-                <!-- COO -->
-                <div class="team-member">
-                    <div class="member-meta">
-                        <h3>Abdullah Al Alif</h3>
-                        <span class="member-role">COO & Core Engineer</span>
-                    </div>
-                    <div>
-                        <p class="member-bio">
-                            Manages internal operations, deployment timelines, and team coordination. Operates as a Core GoLang Developer, jointly responsible for backend API development, query optimization, and maintaining server-side performance alongside the CEO.
-                        </p>
-                        <span class="tech-tag">Operations</span>
-                        <span class="tech-tag">GoLang</span>
-                        <span class="tech-tag">Database Logic</span>
-                    </div>
-                </div>
-
-                <!-- CTO -->
-                <div class="team-member">
-                    <div class="member-meta">
-                        <h3>Rayhan Mahmud</h3>
-                        <span class="member-role">Chief Technology Officer</span>
-                    </div>
-                    <div>
-                        <p class="member-bio">
-                            Responsible for the entire mobile ecosystem architecture. Leads the Flutter development team, defines software standards, and ensures seamless, secure integration between the mobile client and the backend infrastructure.
-                        </p>
-                        <span class="tech-tag">Flutter</span>
-                        <span class="tech-tag">Software Architecture</span>
-                        <span class="tech-tag">Native Performance</span>
-                    </div>
-                </div>
-
-                <!-- CRO -->
-                <div class="team-member">
-                    <div class="member-meta">
-                        <h3>Rifat Hassan</h3>
-                        <span class="member-role">Chief Research Officer</span>
-                    </div>
-                    <div>
-                        <p class="member-bio">
-                            Leads Research & Development. Responsible for the core algorithm logic (Eco-Score) and competitive market analysis. Currently developing frontend capabilities for upcoming R&D modules.
-                        </p>
-                        <span class="tech-tag">Algorithms</span>
-                        <span class="tech-tag">Market Research</span>
-                        <span class="tech-tag">Frontend R&D</span>
-                    </div>
-                </div>
-
-
-
-                <!-- CFO -->
-                <div class="team-member">
-                    <div class="member-meta">
-                        <h3>Lubna Jahan Lipa</h3>
-                        <span class="member-role">Chief Financial Officer</span>
-                    </div>
-                    <div>
-                        <p class="member-bio">
-                            Manages corporate finances, budgeting, and pricing models. Ensures legal compliance for enterprise partnerships and oversees the financial structuring of future assets.
-                        </p>
-                        <span class="tech-tag">Financial Modeling</span>
-                        <span class="tech-tag">Compliance</span>
-                    </div>
-                </div>
-
-                <!-- CPO -->
-                <div class="team-member">
-                    <div class="member-meta">
-                        <h3>Mahfuzur Rahman</h3>
-                        <span class="member-role">Chief Product Officer</span>
-                    </div>
-                    <div>
-                        <p class="member-bio">
-                            Oversees product design (UI/UX) and the B2B Admin Panel (React/Node). Bridges the gap between design and engineering by working closely with the GoLang backend team for API integration.
-                        </p>
-                        <span class="tech-tag">Product Design</span>
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">API Integration</span>
-                    </div>
-                </div>
-
-                <!-- Lead Engineer -->
-                <div class="team-member">
-                    <div class="member-meta">
-                        <h3>Fahmida Kotha</h3>
-                        <span class="member-role">Lead Mobile Engineer</span>
-                    </div>
-                    <div>
-                        <p class="member-bio">
-                            Executes the mobile development strategy. Focuses on code quality, UI responsiveness, and performance optimization. Collaborates directly with the CTO to implement architectural standards.
-                        </p>
-                        <span class="tech-tag">Mobile Dev</span>
-                        <span class="tech-tag">Code Quality</span>
-                    </div>
-                </div>
-
             </div>
+
         </div>
     </section>
 
-    <!-- FUTURE (SECRETIVE) -->
-    <section id="research" class="section" style="border-bottom: none;">
+    <!-- THE CRISIS (PROBLEM FIRST) -->
+    <section id="crisis" class="section crisis-section">
         <div class="container">
-            <div style="background: #111827; color: white; padding: 80px; border-radius: 16px; text-align: center;">
-                <i class="ph-fill ph-lock-key" style="font-size: 3rem; margin-bottom: 20px; color: var(--accent-purple);"></i>
-                <h2 style="margin-bottom: 20px;">Phase II: Quantification Protocol</h2>
-                <p style="max-width: 600px; margin: 0 auto; color: #9ca3af;">
-                    We are currently developing the mathematical framework for the next generation of environmental assets. This infrastructure is currently in closed beta.
-                </p>
-                <div style="margin-top: 40px; font-size: 0.9rem; letter-spacing: 2px; opacity: 0.5;">
-                    COMING 2026
+            <span class="badge badge-danger">The National Emergency</span>
+            <h2 style="font-size: 2.5rem; max-width: 800px;">The Invisible Cost of Blind Consumption.</h2>
+            <p style="color: var(--text-body); max-width: 700px;">Before we can fix the economy, we must fix the biological and environmental deficit we are creating daily.</p>
+            
+            <div class="crisis-grid">
+                <!-- Health Risk -->
+                <div class="crisis-card health">
+                    <i class="ph-fill ph-warning" style="font-size: 2.5rem; color: var(--accent-danger); margin-bottom: 20px;"></i>
+                    <span class="stat-highlight" style="color: var(--accent-danger);">13M+</span>
+                    <h3>Biological Debt</h3>
+                    <p>
+                        Bangladesh is facing a <strong>Non-Communicable Disease (NCD) epidemic</strong>. Millions of diabetics are unknowingly consuming hidden sugars and banned preservatives disguised under technical jargon like "E102" or "High Fructose Corn Syrup".
+                    </p>
+                    <div style="font-size: 0.9rem; font-weight: 600; color: var(--accent-danger);">Risk: Immediate & Chronic</div>
+                </div>
+
+                <!-- Eco Risk -->
+                <div class="crisis-card eco">
+                    <i class="ph-fill ph-trash" style="font-size: 2.5rem; color: #475569; margin-bottom: 20px;"></i>
+                    <span class="stat-highlight" style="color: #475569;">3,000 Tn</span>
+                    <h3>Environmental Debt</h3>
+                    <p>
+                        Dhaka generates thousands of tonnes of plastic waste daily. Most packaging carries a "Recyclable" logo but is rejected by local infrastructure because it uses multi-layer laminates that <strong>cannot be processed in Bangladesh</strong>.
+                    </p>
+                    <div style="font-size: 0.9rem; font-weight: 600; color: #475569;">Risk: Irreversible Pollution</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer>
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
-            <div class="logo">
-                <!-- Optional: Footer Logo Image -->
-                <img src="https://i.ibb.co.com/TxQ3ctQG/IMG-8647-2-Photoroom.png" alt="EnviQuant Logo" style="height: 30px;">
-            </div>
-            <div>
-                &copy; 2025 EnviQuant Analytics. All rights reserved.
+    <!-- PRODUCT: KI KHAI? (SOLUTION) -->
+    <section id="product" class="section product-section">
+        <div class="container">
+            <div class="split-grid">
+                <div>
+                    <span class="badge badge-tech">The Solution</span>
+                    <h2 style="font-size: 3rem; margin-bottom: 20px; line-height: 1;">Ki Khai?</h2>
+                    <h3 style="font-size: 1.5rem; color: var(--text-body); font-weight: 400; margin-bottom: 30px;">The Intelligence Shield.</h3>
+                    <p style="color: var(--text-body); margin-bottom: 30px;">
+                        We don't just translate language; we translate <strong>Risk</strong>. <br><br>
+                        Ki Khai? is an AI-powered defense tool that cross-references product ingredients with <strong>BFSA Laws</strong> and <strong>Dhaka's Waste Capabilities</strong> to give you a simple Yes/No decision.
+                    </p>
+                    <p style="font-weight: 600; color: var(--text-main);">Status: <span style="color: var(--accent-primary);">MVP Ready for Pilot</span></p>
+                    <br>
+                    <a href="https://kikhai.github.io/" target="_blank" style="color: var(--accent-tech); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--accent-tech);">
+                        Visit Product Site &rarr;
+                    </a>
+                </div>
+                <div class="product-card-wrap">
+                    <div class="feature-card">
+                        <div class="icon-box" style="background: #fee2e2; color: #ef4444;"><i class="ph-fill ph-heartbeat"></i></div>
+                        <h3>Health Score (0-100)</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-body);">
+                            <strong>Solves Biological Debt:</strong> Instantly detects hidden sugars and carcinogens tailored to your health profile (Diabetes, Allergy).
+                        </p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon-box" style="background: #dcfce7; color: #10b981;"><i class="ph-fill ph-plant"></i></div>
+                        <h3>Eco Score (A-F)</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-body);">
+                            <strong>Solves Environmental Debt:</strong> Verifies if the packet in your hand can <em>actually</em> be recycled in Dhaka.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
-        <!-- SOCIAL LINKS SECTION -->
-<div style="margin-top: 40px; display: flex; gap: 20px; justify-content: center;">
-    <!-- Facebook -->
-    <a href="https://www.facebook.com/enviquant" target="_blank" style="color: var(--accent-purple); font-size: 1.5rem;">
-        <i class="ph-fill ph-facebook-logo"></i>
-    </a>
-    <!-- LinkedIn -->
-    <a href="https://linkedin.com/in/enviquant" target="_blank" style="color: var(--accent-purple); font-size: 1.5rem;">
-        <i class="ph-fill ph-linkedin-logo"></i>
-    </a>
-    <!-- Email -->
-    <a href="mailto:enviquant@gmail.com" style="color: var(--accent-purple); font-size: 1.5rem;">
-        <i class="ph-fill ph-envelope"></i>
-    </a>
-</div>
+    </section>
 
+    <!-- TECHNOLOGY -->
+    <section id="technology" class="section tech-section">
+        <div class="container">
+            <span class="badge badge-tech" style="background: rgba(255,255,255,0.1); color: white; border:none;">Under the Hood</span>
+            <h2 style="font-size: 2.5rem;">Indigenous Technology.</h2>
+            <p style="max-width: 600px; color: var(--text-light);">A proprietary Microservices Architecture designed for national scale.</p>
+
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <i class="ph-fill ph-code" style="font-size: 2rem; color: #a5b4fc; margin-bottom: 15px;"></i>
+                    <h3>Backend Core</h3>
+                    <p>Built on <span class="code-tag">GoLang</span> for concurrency. Optimized for high-throughput scanning requests.</p>
+                </div>
+                <div class="tech-item">
+                    <i class="ph-fill ph-device-mobile" style="font-size: 2rem; color: #a5b4fc; margin-bottom: 15px;"></i>
+                    <h3>Cross-Platform UI</h3>
+                    <p>Native performance using <span class="code-tag">Flutter</span>. Ensures smooth operation on mass-market devices.</p>
+                </div>
+                <div class="tech-item">
+                    <i class="ph-fill ph-eye" style="font-size: 2rem; color: #a5b4fc; margin-bottom: 15px;"></i>
+                    <h3>Computer Vision</h3>
+                    <p>Custom <span class="code-tag">OCR Pipeline</span> integrated with Google Vision API. Currently training on local datasets.</p>
+                </div>
+                <div class="tech-item">
+                    <i class="ph-fill ph-database" style="font-size: 2rem; color: #a5b4fc; margin-bottom: 15px;"></i>
+                    <h3>Compliance DB</h3>
+                    <p><span class="code-tag">PostgreSQL</span> database mapped to 5,000+ chemical compounds and legal acts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM: TASK FORCE -->
+    <section id="team" class="section team-section">
+        <div class="container">
+            <span class="badge badge-tech">The Architects</span>
+            <h2 style="font-size: 2.5rem; margin-bottom: 50px;">Engineering Task Force</h2>
+            <div class="team-grid">
+                
+                <!-- 1. CEO -->
+                <div class="team-card">
+                    <span class="role">Lead Architect & CEO</span>
+                    <h3>Razibul Hasan Badhon</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-body); margin-top: 10px;">
+                        Designing the GoLang microservices architecture and driving strategic partnerships (Wholesale Club).
+                    </p>
+                    <div class="tech-stack-list">
+                        <span class="mini-tag">GoLang</span>
+                        <span class="mini-tag">Strategy</span>
+                    </div>
+                </div>
+
+                <!-- 2. COMPLIANCE -->
+                <div class="team-card">
+                    <span class="role">Head of Data Logic & Compliance</span>
+                    <h3>Lubna Jahan Lipa</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-body); margin-top: 10px;">
+                        Mapping algorithmic logic to BFSA/WHO laws. Ensuring 100% legal defensibility of the scoring engine.
+                    </p>
+                    <div class="tech-stack-list">
+                        <span class="mini-tag">Regulatory Data</span>
+                        <span class="mini-tag">SQL Logic</span>
+                    </div>
+                </div>
+
+                <!-- 3. CTO -->
+                <div class="team-card">
+                    <span class="role">CTO & Lead Mobile Engr.</span>
+                    <h3>Abdullah Al Alif</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-body); margin-top: 10px;">
+                        Leading the Flutter development team and managing backend deployment protocols.
+                    </p>
+                    <div class="tech-stack-list">
+                        <span class="mini-tag">Flutter</span>
+                        <span class="mini-tag">Dart</span>
+                        <span class="mini-tag">Cloud</span>
+                    </div>
+                </div>
+
+                 <!-- 4. DEPLOYMENT -->
+                 <div class="team-card">
+                    <span class="role">Head of Deployment</span>
+                    <h3>Rifat Hassan</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-body); margin-top: 10px;">
+                        Overseeing pilot execution, field data acquisition, and user acceptance testing.
+                    </p>
+                    <div class="tech-stack-list">
+                        <span class="mini-tag">Field Ops</span>
+                        <span class="mini-tag">QA</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <img src="https://i.ibb.co.com/TxQ3ctQG/IMG-8647-2-Photoroom.png" alt="EnviQuant Logo" style="height: 30px;">
+                <p style="color: var(--text-body); font-weight: 500;">EnviQuant Analytics.</p>
+            </div>
+            <div style="text-align: right;">
+                <p>Dhaka, Bangladesh</p>
+                <p style="margin-top: 5px; color: var(--text-light);">&copy; 2026 EnviQuant. All Rights Reserved.</p>
+            </div>
+        </div>
     </footer>
-
-    <!-- Mobile Menu Logic -->
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('active');
-        }
-    </script>
 
 </body>
 </html>
